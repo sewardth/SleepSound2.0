@@ -49,27 +49,29 @@
                                 <rect key="frame" x="224" y="153" width="152" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paV-y4-VsA">
-                                <rect key="frame" x="222" y="70" width="156" height="62"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7u-zJ-y8q">
                                 <rect key="frame" x="242" y="187" width="116" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Change this time"/>
+                                <state key="normal" title="Change this time">
+                                    <color key="titleColor" red="0.034171802704970444" green="1" blue="0.2428690654399841" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="seo-7k-xJL" kind="show" id="eb7-0j-LE1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paV-y4-VsA">
+                                <rect key="frame" x="192" y="72" width="216" height="81"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="LbZ-xh-p0b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1tQ-eO-KXQ"/>
                             <constraint firstItem="zn3-Ev-RNc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XZ5-Tr-lYt"/>
@@ -82,6 +84,7 @@
                     <connections>
                         <outlet property="startButton" destination="wOz-dH-9l8" id="eMn-bo-9e4"/>
                         <outlet property="stopButton" destination="zn3-Ev-RNc" id="49h-Ee-ruh"/>
+                        <outlet property="timeLabel" destination="paV-y4-VsA" id="AJd-zx-sMR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

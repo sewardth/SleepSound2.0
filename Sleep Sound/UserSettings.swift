@@ -16,8 +16,8 @@ struct userSettings{
     let weekendKey = "WNT";
     
     //create variables for storing times
-    var weekdayTime: NSDateComponents!;
-    var weekendTime: NSDateComponents!;
+    var weekdayTime: NSDate!;
+    var weekendTime: NSDate!;
     
     
     
@@ -28,17 +28,17 @@ struct userSettings{
        
     }
     
-    func getUserSettings(key: String) ->NSDateComponents?{
+    func getUserSettings(key: String) ->NSDate!{
         //create an instance of the default class
         let defaults = NSUserDefaults.standardUserDefaults();
         
         //query the stored user settings
-        return defaults.valueForKey(key) as? NSDateComponents;
+        return defaults.valueForKey(key) as! NSDate!;
 
         
     }
     
-    func setUserSettings(key: String, value: NSDateComponents){
+    func setUserSettings(key: String, value: NSDate){
         //create an instance of the default class
         let defaults = NSUserDefaults.standardUserDefaults();
         

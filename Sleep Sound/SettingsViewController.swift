@@ -33,14 +33,12 @@ class SettingsViewController: UIViewController {
         
         //if weekday setting exists, set weekday picker to that time
         if let weekday = settings.weekdayTime{
-            let date = calendar.dateFromComponents(weekday);
-            weekdayPicker.setDate(date!, animated: true);
+            weekdayPicker.setDate(weekday, animated: true);
         }
         
         //if weekend date setting exists, set weekday picker to that time
         if let weekend = settings.weekendTime{
-            let date = calendar.dateFromComponents(weekend);
-            weekendPicker.setDate(date!, animated: true);
+            weekendPicker.setDate(weekend, animated: true);
         }
         
     }
@@ -66,10 +64,9 @@ class SettingsViewController: UIViewController {
         
         //get datepicker date and convert to components
         let date = weekdayPicker.date;
-        let components = calendar.components([.Year,.Month,.Day,.Hour,.Minute], fromDate:date);
         
         //set user default
-        settings.weekdayTime = components;
+        settings.weekdayTime = date;
         
     }
     
@@ -78,10 +75,9 @@ class SettingsViewController: UIViewController {
     @IBAction func setWeekend(sender: UIDatePicker) {
         //get datepicker date and convert to components
         let date = weekendPicker.date;
-        let components = calendar.components([.Year,.Month,.Day,.Hour,.Minute], fromDate:date);
         
         //set user default
-        settings.weekendTime = components;
+        settings.weekendTime = date;
     }
     
     
