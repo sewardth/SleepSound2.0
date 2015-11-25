@@ -12,23 +12,29 @@ import Foundation
 struct userSettings{
     
     //define storage keys
-    let weekdayKey = "WDT";
-    let weekendKey = "WNT";
+    let storageKeys = ["Monday":"MON",
+        "Tuesday":"TUE",
+        "Wednesday":"WED",
+        "Thursday":"THU",
+        "Friday":"FRI",
+        "Saturday":"SAT",
+        "Sunday":"SUN"];
     
-    //create variables for storing times
-    var weekdayTime: NSDate!;
-    var weekendTime: NSDate!;
+    
+    //create dictionary variable for storing times
+    var savedTimes = [String:NSDate!]();
     
     
     
     init(){
-        //set the time variables with stored data
-        weekdayTime = getUserSettings(weekdayKey);
-        weekendTime = getUserSettings(weekendKey);
+        //set the time variables with stored data using storage keys
+        for (day, dayKey) in storageKeys{
+            savedTimes.updateValue(getUserSettings(dayKey), forKey: day);
+        }
        
     }
     
-    func getUserSettings(key: String) ->NSDate!{
+    private func getUserSettings(key: String) ->NSDate!{
         //create an instance of the default class
         let defaults = NSUserDefaults.standardUserDefaults();
         

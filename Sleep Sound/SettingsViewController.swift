@@ -10,11 +10,6 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    //outlets for date pickers
-    @IBOutlet weak var weekdayPicker: UIDatePicker!
-    @IBOutlet weak var weekendPicker: UIDatePicker!
-    
-    
     
     //fetch user settings
     var settings = userSettings();
@@ -29,17 +24,8 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated);
- 
         
-        //if weekday setting exists, set weekday picker to that time
-        if let weekday = settings.weekdayTime{
-            weekdayPicker.setDate(weekday, animated: true);
-        }
-        
-        //if weekend date setting exists, set weekday picker to that time
-        if let weekend = settings.weekendTime{
-            weekendPicker.setDate(weekend, animated: true);
-        }
+        print(settings);
         
     }
     
@@ -47,10 +33,7 @@ class SettingsViewController: UIViewController {
     override func viewWillDisappear(animated:Bool) {
         super.viewWillDisappear(animated);
         //save the weekday setting
-        settings.setUserSettings(settings.weekdayKey, value: settings.weekdayTime);
-        
-        //save the weekend setting
-        settings.setUserSettings(settings.weekendKey, value: settings.weekendTime);
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,26 +42,7 @@ class SettingsViewController: UIViewController {
     }
     
     
-    
-    @IBAction func setWeekday(sender: UIDatePicker) {
-        
-        //get datepicker date and convert to components
-        let date = weekdayPicker.date;
-        
-        //set user default
-        settings.weekdayTime = date;
-        
-    }
-    
-    
-    
-    @IBAction func setWeekend(sender: UIDatePicker) {
-        //get datepicker date and convert to components
-        let date = weekendPicker.date;
-        
-        //set user default
-        settings.weekendTime = date;
-    }
+
     
     
     

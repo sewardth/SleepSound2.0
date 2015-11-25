@@ -103,56 +103,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="eOS-JP-Of8">
-                                <rect key="frame" x="0.0" y="104" width="600" height="216"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8h-Jc-LXU">
+                                <rect key="frame" x="244" y="84" width="113" height="30"/>
                                 <animations/>
-                                <date key="date" timeIntervalSinceReferenceDate="469918757.055987">
-                                    <!--2015-11-22 20:59:17 +0000-->
-                                </date>
-                                <locale key="locale" localeIdentifier="en_US"/>
-                                <connections>
-                                    <action selector="setWeekday:" destination="seo-7k-xJL" eventType="valueChanged" id="7Mn-Sz-Knc"/>
-                                </connections>
-                            </datePicker>
-                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="aKk-Wi-YRt">
-                                <rect key="frame" x="0.0" y="384" width="600" height="216"/>
-                                <animations/>
-                                <date key="date" timeIntervalSinceReferenceDate="469918765.27085298">
-                                    <!--2015-11-22 20:59:25 +0000-->
-                                </date>
-                                <locale key="locale" localeIdentifier="en_US"/>
-                                <connections>
-                                    <action selector="setWeekend:" destination="seo-7k-xJL" eventType="valueChanged" id="52C-oE-QKF"/>
-                                </connections>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Weekday Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGa-su-ExG">
-                                <rect key="frame" x="0.0" y="64" width="600" height="32"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Weekend Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67p-02-P4I">
-                                <rect key="frame" x="0.0" y="352" width="600" height="32"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Current Settings">
+                                    <color key="titleColor" red="0.034171802699999997" green="1" blue="0.2428690654" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="aKk-Wi-YRt" firstAttribute="centerX" secondItem="mDa-fK-SKr" secondAttribute="centerX" id="LMN-BI-p3k"/>
-                            <constraint firstItem="67p-02-P4I" firstAttribute="centerX" secondItem="mDa-fK-SKr" secondAttribute="centerX" id="P5M-z9-pxo"/>
-                            <constraint firstItem="JGa-su-ExG" firstAttribute="centerX" secondItem="mDa-fK-SKr" secondAttribute="centerX" id="Zsj-TT-CUj"/>
-                            <constraint firstItem="eOS-JP-Of8" firstAttribute="centerX" secondItem="mDa-fK-SKr" secondAttribute="centerX" id="wwy-kl-WsE"/>
+                            <constraint firstItem="u8h-Jc-LXU" firstAttribute="centerX" secondItem="mDa-fK-SKr" secondAttribute="centerX" id="2Is-if-uhX"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="weekdayPicker" destination="eOS-JP-Of8" id="48n-Oj-oIo"/>
-                        <outlet property="weekendPicker" destination="aKk-Wi-YRt" id="46W-RD-f39"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxN-yV-Rds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
