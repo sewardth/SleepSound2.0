@@ -19,21 +19,24 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated);
         
         //create UI Labels
-        self.createUI();
+        createUI();
         
     }
     
     
     override func viewWillDisappear(animated:Bool) {
         super.viewWillDisappear(animated);
-        //save the weekday setting
+        //save the changed settings
+        for key in settings.savedTimes.keys{
+            let value = settings.savedTimes[key];
+            settings.setUserSettings(key, value: value!);
+        }
 
     }
 
@@ -46,16 +49,62 @@ class SettingsViewController: UIViewController {
     func formatDate(date:NSDate)->String{
         //convert NSDate object to string
         let formatter = NSDateFormatter();
+        formatter.dateStyle = .NoStyle;
         formatter.timeStyle = .ShortStyle;
         
         return formatter.stringFromDate(date);
     }
     
     
+    func saveTime(sender:IdentifiedUIDatePicker){
+        
+        //get key value
+        let keyValue = sender.pickerKey;
+        
+        //get picker time
+        let dateTime = sender.date;
+        
+        //set and save value
+        settings.savedTimes[keyValue!] =  dateTime;
+        
+        //rebuild UI
+        createUI();
+        
+        
+    }
+    
+    
+    
+    
     func timeSet(sender:IdentifiedButton!){
         //recieves event trigger from button press
         
-        print(sender.buttonIdentifier!);
+        //create date picker
+        let datePicker = createUIPicker(sender.buttonIdentifier!);
+        
+        //display picker
+        self.view.addSubview(datePicker);
+        
+    }
+    
+    
+    func createUIPicker(key: String)->IdentifiedUIDatePicker{
+        //create a UI Date picker with time only
+        let datePicker = IdentifiedUIDatePicker(frame: CGRectMake(10, 400,  300,  150));
+        datePicker.setValue(UIColor.whiteColor(), forKeyPath: "textColor");
+        datePicker.datePickerMode = UIDatePickerMode.Time;
+        datePicker.pickerKey = key;
+        datePicker.addTarget(self, action: "saveTime:", forControlEvents: UIControlEvents.ValueChanged);
+        
+        //check for saved time
+        let savedTime = settings.savedTimes[key];
+        
+        //if saved time, set UI picker to saved value.
+        if savedTime! != nil{
+            datePicker.setDate(savedTime!, animated: false);
+        }
+        
+        return datePicker;
     }
     
     
@@ -132,12 +181,6 @@ class SettingsViewController: UIViewController {
         
 
     }
-    
-    
-
-    
-    
-    
     
     
 

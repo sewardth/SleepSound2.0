@@ -28,8 +28,8 @@ struct userSettings{
     
     init(){
         //set the time variables with stored data using storage keys
-        for (day, dayKey) in storageKeys{
-            savedTimes.updateValue(getUserSettings(dayKey), forKey: day);
+        for day in storageKeys.keys{
+            savedTimes.updateValue(getUserSettings(day), forKey: day);
         }
        
     }
@@ -44,7 +44,7 @@ struct userSettings{
         
     }
     
-    func setUserSettings(key: String, value: NSDate){
+    func setUserSettings(key: String, value: NSDate!){
         //create an instance of the default class
         let defaults = NSUserDefaults.standardUserDefaults();
         
@@ -52,7 +52,7 @@ struct userSettings{
         defaults.setValue(value, forKey: key)
         defaults.synchronize();
         
-        print("Stored " + key);
+        print("Stored " + key + " : Value: " + String(value));
         
     }
 }
