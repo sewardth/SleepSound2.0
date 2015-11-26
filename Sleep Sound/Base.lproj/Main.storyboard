@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sleep Sound-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Sleep_Sound" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,7 +71,7 @@
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LbZ-xh-p0b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1tQ-eO-KXQ"/>
                             <constraint firstItem="zn3-Ev-RNc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XZ5-Tr-lYt"/>
@@ -80,7 +80,9 @@
                             <constraint firstItem="wOz-dH-9l8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wKI-Dw-2cl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="AlB-E8-zRt"/>
+                    <navigationItem key="navigationItem" title="Sleep Sound" id="AlB-E8-zRt">
+                        <barButtonItem key="backBarButtonItem" title="Sleep" id="D6O-0F-p5i"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="startButton" destination="wOz-dH-9l8" id="eMn-bo-9e4"/>
                         <outlet property="stopButton" destination="zn3-Ev-RNc" id="49h-Ee-ruh"/>
@@ -102,20 +104,8 @@
                     <view key="view" contentMode="scaleToFill" id="mDa-fK-SKr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8h-Jc-LXU">
-                                <rect key="frame" x="244" y="84" width="113" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Current Settings">
-                                    <color key="titleColor" red="0.034171802699999997" green="1" blue="0.2428690654" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="u8h-Jc-LXU" firstAttribute="centerX" secondItem="mDa-fK-SKr" secondAttribute="centerX" id="2Is-if-uhX"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxN-yV-Rds" userLabel="First Responder" sceneMemberID="firstResponder"/>

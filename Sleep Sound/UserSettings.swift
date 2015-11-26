@@ -12,13 +12,13 @@ import Foundation
 struct userSettings{
     
     //define storage keys
-    let storageKeys = ["Monday":"MON",
-        "Tuesday":"TUE",
-        "Wednesday":"WED",
-        "Thursday":"THU",
-        "Friday":"FRI",
-        "Saturday":"SAT",
-        "Sunday":"SUN"];
+    let storageKeys = ["2-Monday":"MON",
+        "3-Tuesday":"TUE",
+        "4-Wednesday":"WED",
+        "5-Thursday":"THU",
+        "6-Friday":"FRI",
+        "7-Saturday":"SAT",
+        "1-Sunday":"SUN"];
     
     
     //create dictionary variable for storing times

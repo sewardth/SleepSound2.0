@@ -25,7 +25,8 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated);
         
-        print(settings);
+        //create UI Labels
+        self.createUI();
         
     }
     
@@ -39,6 +40,93 @@ class SettingsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func formatDate(date:NSDate)->String{
+        //convert NSDate object to string
+        let formatter = NSDateFormatter();
+        formatter.timeStyle = .ShortStyle;
+        
+        return formatter.stringFromDate(date);
+    }
+    
+    
+    
+    func createLabel(labelTitle:String, startingHeight:CGFloat ){
+        //create labels
+        let label = UILabel();
+        label.frame = CGRectMake(50,startingHeight,100,21);
+        label.textColor = UIColor.whiteColor();
+        label.backgroundColor = UIColor.blackColor();
+        label.text = labelTitle;
+        label.font = UIFont.boldSystemFontOfSize(16.0);
+        
+        //add label to the view
+        self.view.addSubview(label);
+        
+    }
+    
+    
+    func createButton(keyValue:NSDate?, startingHeight:CGFloat){
+        print("creating button - " + String(keyValue));
+        
+        //create button
+        let button: UIButton = UIButton(frame: CGRectMake(200, startingHeight, 125, 30));
+        button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside);
+        
+        //if value is blank set color to red and text to "-"
+        if keyValue != nil{
+            button.backgroundColor = UIColor.greenColor();
+            
+            //set time label
+            let title = self.formatDate(keyValue!);
+            button.setTitle(title, forState: UIControlState.Normal);
+        }
+        else{
+            button.backgroundColor = UIColor.redColor();
+            button.setTitle("-", forState: UIControlState.Normal);
+            
+        }
+        //add button to the view
+        self.view.addSubview(button);
+        
+    }
+    
+    
+    func createUI(){
+        //create labels based on keys in dictionary
+        
+        //set the starting height for the labels
+        var startingHeight: CGFloat = 150.0;
+        
+        //sort the dictionary keys in an arry
+        let sortedKeys = Array(settings.savedTimes.keys).sort();
+        
+        //iterate the array and build labels
+        for day in sortedKeys{
+            
+            //strip numbers from day
+            let index = day.startIndex.advancedBy(2);
+            let labelTitle = day.substringFromIndex(index);
+            
+            //create labels
+            createLabel(labelTitle, startingHeight: startingHeight);
+            
+            //create buttons
+            //get value
+            let value = settings.savedTimes[day];
+            createButton(value!, startingHeight: startingHeight);
+            
+            
+            //increment height
+            startingHeight =  startingHeight + 45.0;
+            
+        }
+        
+        
+        
+
     }
     
     
