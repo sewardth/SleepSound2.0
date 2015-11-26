@@ -15,6 +15,7 @@
 		E251D1441C0213C000631FC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E251D1421C0213C000631FC8 /* LaunchScreen.storyboard */; };
 		E251D14C1C02678400631FC8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251D14B1C02678400631FC8 /* SettingsViewController.swift */; };
 		E251D14E1C02699300631FC8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251D14D1C02699300631FC8 /* UserSettings.swift */; };
+		E251D1501C07337C00631FC8 /* IdentifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251D14F1C07337C00631FC8 /* IdentifiedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E251D1451C0213C000631FC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E251D14B1C02678400631FC8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E251D14D1C02699300631FC8 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		E251D14F1C07337C00631FC8 /* IdentifiedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				E251D1421C0213C000631FC8 /* LaunchScreen.storyboard */,
 				E251D1451C0213C000631FC8 /* Info.plist */,
 				E251D13D1C0213C000631FC8 /* Sleep_Sound.xcdatamodeld */,
+				E251D14F1C07337C00631FC8 /* IdentifiedButton.swift */,
 			);
 			path = "Sleep Sound";
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E251D1501C07337C00631FC8 /* IdentifiedButton.swift in Sources */,
 				E251D1391C0213C000631FC8 /* ViewController.swift in Sources */,
 				E251D13F1C0213C000631FC8 /* Sleep_Sound.xcdatamodeld in Sources */,
 				E251D1371C0213C000631FC8 /* AppDelegate.swift in Sources */,

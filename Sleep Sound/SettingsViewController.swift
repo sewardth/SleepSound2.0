@@ -52,6 +52,12 @@ class SettingsViewController: UIViewController {
     }
     
     
+    func timeSet(sender:IdentifiedButton!){
+        //recieves event trigger from button press
+        
+        print(sender.buttonIdentifier!);
+    }
+    
     
     func createLabel(labelTitle:String, startingHeight:CGFloat ){
         //create labels
@@ -68,12 +74,12 @@ class SettingsViewController: UIViewController {
     }
     
     
-    func createButton(keyValue:NSDate?, startingHeight:CGFloat){
-        print("creating button - " + String(keyValue));
+    func createButton(key: String, keyValue:NSDate?, startingHeight:CGFloat){
         
         //create button
-        let button: UIButton = UIButton(frame: CGRectMake(200, startingHeight, 125, 30));
-        button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside);
+        let button = IdentifiedButton(frame: CGRectMake(175, startingHeight, 125, 30));
+        button.buttonIdentifier = key;
+        button.addTarget(self, action: "timeSet:", forControlEvents: UIControlEvents.TouchUpInside);
         
         //if value is blank set color to red and text to "-"
         if keyValue != nil{
@@ -98,7 +104,7 @@ class SettingsViewController: UIViewController {
         //create labels based on keys in dictionary
         
         //set the starting height for the labels
-        var startingHeight: CGFloat = 150.0;
+        var startingHeight: CGFloat = 100.0;
         
         //sort the dictionary keys in an arry
         let sortedKeys = Array(settings.savedTimes.keys).sort();
@@ -116,15 +122,13 @@ class SettingsViewController: UIViewController {
             //create buttons
             //get value
             let value = settings.savedTimes[day];
-            createButton(value!, startingHeight: startingHeight);
+            createButton(day, keyValue: value!, startingHeight: startingHeight);
             
             
             //increment height
             startingHeight =  startingHeight + 45.0;
             
         }
-        
-        
         
 
     }
