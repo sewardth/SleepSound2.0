@@ -63,7 +63,7 @@ class SettingsViewController: UIViewController {
         //reset button
         //get clean time
         let buttonTime = CleanDate(normalDate: dateTime).formattedStringTime;
-        sender.buttonSender!.backgroundColor = UIColor.greenColor();
+        sender.buttonSender!.layer.borderColor = UIColor.greenColor().CGColor;
         sender.buttonSender!.setTitle(buttonTime, forState: UIControlState.Normal);
         
         
@@ -137,17 +137,20 @@ class SettingsViewController: UIViewController {
         let button = IdentifiedButton(frame: CGRectMake(175, startingHeight, 125, 30));
         button.buttonIdentifier = key;
         button.addTarget(self, action: "timeSet:", forControlEvents: UIControlEvents.TouchUpInside);
+        button.backgroundColor = UIColor.blackColor();
+        button.layer.cornerRadius = 5;
+        button.layer.borderWidth=1;
         
         //if value is blank set color to red and text to "-"
         if keyValue != nil{
-            button.backgroundColor = UIColor.greenColor();
+            button.layer.borderColor = UIColor.greenColor().CGColor;
             
             //set time label
             let title = CleanDate(normalDate: keyValue!).formattedStringTime;
             button.setTitle(title, forState: UIControlState.Normal);
         }
         else{
-            button.backgroundColor = UIColor.redColor();
+            button.layer.borderColor = UIColor.redColor().CGColor;
             button.setTitle("-", forState: UIControlState.Normal);
             
         }
