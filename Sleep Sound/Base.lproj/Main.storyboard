@@ -45,15 +45,29 @@
                                     <action selector="stopSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QEx-XL-3Ff"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Time sound will end" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbZ-xh-p0b">
-                                <rect key="frame" x="224" y="153" width="152" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbZ-xh-p0b">
+                                <rect key="frame" x="224" y="163" width="152" height="21"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paV-y4-VsA">
+                                <rect key="frame" x="192" y="98" width="216" height="81"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="43"/>
+                                <color key="textColor" red="1" green="0.062179457429968776" blue="0.04874302605519043" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sound will play until:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5C2-wn-Mk9">
+                                <rect key="frame" x="180" y="83" width="240" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7u-zJ-y8q">
-                                <rect key="frame" x="242" y="187" width="116" height="30"/>
+                                <rect key="frame" x="242" y="219" width="116" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Change this time">
                                     <color key="titleColor" red="0.034171802704970444" green="1" blue="0.2428690654399841" alpha="1" colorSpace="calibratedRGB"/>
@@ -62,13 +76,6 @@
                                     <segue destination="seo-7k-xJL" kind="show" id="eb7-0j-LE1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paV-y4-VsA">
-                                <rect key="frame" x="192" y="72" width="216" height="81"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -77,6 +84,7 @@
                             <constraint firstItem="zn3-Ev-RNc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XZ5-Tr-lYt"/>
                             <constraint firstItem="paV-y4-VsA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mlL-lW-XT2"/>
                             <constraint firstItem="k7u-zJ-y8q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ogJ-ri-NyS"/>
+                            <constraint firstItem="5C2-wn-Mk9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="p3K-nH-LPf"/>
                             <constraint firstItem="wOz-dH-9l8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wKI-Dw-2cl"/>
                         </constraints>
                     </view>
@@ -84,6 +92,7 @@
                         <barButtonItem key="backBarButtonItem" title="Sleep" id="D6O-0F-p5i"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="dayLabel" destination="LbZ-xh-p0b" id="off-6u-CNu"/>
                         <outlet property="startButton" destination="wOz-dH-9l8" id="eMn-bo-9e4"/>
                         <outlet property="stopButton" destination="zn3-Ev-RNc" id="49h-Ee-ruh"/>
                         <outlet property="timeLabel" destination="paV-y4-VsA" id="AJd-zx-sMR"/>

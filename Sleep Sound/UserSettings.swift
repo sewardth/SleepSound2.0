@@ -12,13 +12,13 @@ import Foundation
 struct userSettings{
     
     //define storage keys
-    let storageKeys = ["2-Monday":"MON",
-        "3-Tuesday":"TUE",
-        "4-Wednesday":"WED",
-        "5-Thursday":"THU",
-        "6-Friday":"FRI",
-        "7-Saturday":"SAT",
-        "1-Sunday":"SUN"];
+    let storageKeys = [2:"2-Monday",
+        3:"3-Tuesday",
+        4:"4-Wednesday",
+        5:"5-Thursday",
+        6:"6-Friday",
+        7:"7-Saturday",
+        1:"1-Sunday"];
     
     
     //create dictionary variable for storing times
@@ -28,7 +28,7 @@ struct userSettings{
     
     init(){
         //set the time variables with stored data using storage keys
-        for day in storageKeys.keys{
+        for day in storageKeys.values{
             savedTimes.updateValue(getUserSettings(day), forKey: day);
         }
        

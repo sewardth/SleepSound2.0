@@ -17,7 +17,12 @@ class ViewController: UIViewController {
     //create time outlet
     @IBOutlet weak var timeLabel: UILabel!
 
+    //create day label outlet
+    @IBOutlet weak var dayLabel: UILabel!
     
+    
+    //check for saved user settings
+    var settings = userSettings();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +32,75 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
-        
-        //check default user settings
-        let settings = userSettings();
-        
-        //get current time
-        let now = NSDate();
-        let currentDateParts = getDateComponents(now);
+        //update user settings
+        settings = userSettings();
         
         
+        //add time function here
+        let timeSetting = determineRunToTime();
+        
+        //set time label with set time
+        timeLabel.text = timeSetting.formattedStringTime;
+        
+        //create day label
+        let dayLabelValue = settings.storageKeys[timeSetting.getDateComponents().weekday];
+        
+        //strip numbers from day
+        let index = dayLabelValue!.startIndex.advancedBy(2);
+        let daylabelTitle = dayLabelValue!.substringFromIndex(index);
+        
+        //set day label text
+        dayLabel.text = daylabelTitle;
+        
+        
+    }
+    
+    func determineRunToTime()->CleanDate!{
+        //decides which time the user would like the sound to play to
+        let today = NSDate();
+        
+        let cleanNow = CleanDate(normalDate: today); // gets a clean version of current date time
+        
+        //get current date components
+        let cleanNowComponents = cleanNow.getDateComponents();
+        
+        let weekday = cleanNowComponents.weekday;
+        
+        //get saved date and convert to CleanDate with current date
+        let savedDate = getSavedUserTime(weekday);
+        let updatedSaveDate = updateSavedDate(savedDate!, currentDateComp: cleanNowComponents);
+        
+        //if saved date time is less than now, return that setting.  Otherwise, return the next setting.  
+        if updatedSaveDate.timeIntervalSince1970 > today.timeIntervalSince1970 {
+            return CleanDate(normalDate: updatedSaveDate);
+        } else{
+            return CleanDate(normalDate: getSavedUserTime(weekday + 1));
+        }
+    }
+    
+    func getSavedUserTime(weekday: Int)->NSDate!{
+        //receives a weekday integer and queries the saved user setting
+        let lookupKey = settings.storageKeys[weekday];
+        let savedDate = settings.savedTimes[lookupKey!];
+        
+        return savedDate;
+    }
+    
+    func updateSavedDate(savedDateComp: NSDate!, currentDateComp: NSDateComponents!)->NSDate!{
+        //updates saved date with current date parts.  Time remains unchanged
+        
+        //get saved date as a clean date
+        let savedDate = CleanDate(normalDate: savedDateComp);
+        let savedDateComponents = savedDate.getDateComponents();
+        
+        //Update savedDate with current date
+        savedDateComponents.year = currentDateComp.year;
+        savedDateComponents.month = currentDateComp.month;
+        savedDateComponents.day = currentDateComp.day;
+        
+        //convert saved date back to NSDate
+        let updatedSavedDate = savedDate.covertComponentsToDate(savedDateComponents);
+        return updatedSavedDate;
         
     }
     
@@ -77,23 +142,5 @@ class ViewController: UIViewController {
         }
     }
     
-    func getDateComponents(date:NSDate)->NSDateComponents{
-        //converts a NSDate to NSDateComponents
-        
-        let calendar = NSCalendar.currentCalendar();
-        let components = calendar.components([.Hour, .Minute, .Weekday], fromDate: date)
-        return components
-        
-    }
-    
-    func isWeekDayTomorrow(dayOfWeek: Int)->Bool{
-        let tomorrow = dayOfWeek + 1;
-        if (tomorrow>1) && (tomorrow<6){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
 }
 
