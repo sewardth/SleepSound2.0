@@ -10,6 +10,9 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    //set initial variable for UIDatePicker
+    var datePickHolder:IdentifiedUIDatePicker!;
+    
     
     //fetch user settings
     var settings = userSettings();
@@ -46,16 +49,6 @@ class SettingsViewController: UIViewController {
     }
     
     
-    func formatDate(date:NSDate)->String{
-        //convert NSDate object to string
-        let formatter = NSDateFormatter();
-        formatter.dateStyle = .NoStyle;
-        formatter.timeStyle = .ShortStyle;
-        
-        return formatter.stringFromDate(date);
-    }
-    
-    
     func saveTime(sender:IdentifiedUIDatePicker){
         
         //get key value
@@ -67,8 +60,11 @@ class SettingsViewController: UIViewController {
         //set and save value
         settings.savedTimes[keyValue!] =  dateTime;
         
-        //rebuild UI
-        createUI();
+        //reset button
+        //get clean time
+        let buttonTime = CleanDate(normalDate: dateTime).formattedStringTime;
+        sender.buttonSender!.backgroundColor = UIColor.greenColor();
+        sender.buttonSender!.setTitle(buttonTime, forState: UIControlState.Normal);
         
         
     }
@@ -79,11 +75,23 @@ class SettingsViewController: UIViewController {
     func timeSet(sender:IdentifiedButton!){
         //recieves event trigger from button press
         
+        //check if a current date picker exists.  If so, clear before creating new.
+        if datePickHolder != nil{
+            datePickHolder.removeFromSuperview();
+            
+        }
+        
         //create date picker
         let datePicker = createUIPicker(sender.buttonIdentifier!);
         
+        //append button to picker
+        datePicker.buttonSender = sender;
+        
         //display picker
         self.view.addSubview(datePicker);
+        
+        //store datePickHolder in global varible
+        datePickHolder = datePicker;
         
     }
     
@@ -135,7 +143,7 @@ class SettingsViewController: UIViewController {
             button.backgroundColor = UIColor.greenColor();
             
             //set time label
-            let title = self.formatDate(keyValue!);
+            let title = CleanDate(normalDate: keyValue!).formattedStringTime;
             button.setTitle(title, forState: UIControlState.Normal);
         }
         else{

@@ -11,4 +11,5 @@ import UIKit
 
 class IdentifiedUIDatePicker: UIDatePicker{
     var pickerKey: String?;
+    var buttonSender: IdentifiedButton?;
 }

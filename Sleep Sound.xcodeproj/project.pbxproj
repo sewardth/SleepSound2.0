@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2385C581C07ED3E00E18E5B /* CleanDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2385C571C07ED3E00E18E5B /* CleanDates.swift */; };
 		E251D1371C0213C000631FC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251D1361C0213C000631FC8 /* AppDelegate.swift */; };
 		E251D1391C0213C000631FC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251D1381C0213C000631FC8 /* ViewController.swift */; };
 		E251D13C1C0213C000631FC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E251D13A1C0213C000631FC8 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E2385C571C07ED3E00E18E5B /* CleanDates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanDates.swift; sourceTree = "<group>"; };
 		E251D1331C0213C000631FC8 /* Sleep Sound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sleep Sound.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E251D1361C0213C000631FC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E251D1381C0213C000631FC8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				E251D1381C0213C000631FC8 /* ViewController.swift */,
 				E251D13A1C0213C000631FC8 /* Main.storyboard */,
 				E251D1511C0766D500631FC8 /* IdentifiedUIDatePicker.swift */,
+				E2385C571C07ED3E00E18E5B /* CleanDates.swift */,
 				E251D1401C0213C000631FC8 /* Assets.xcassets */,
 				E251D1421C0213C000631FC8 /* LaunchScreen.storyboard */,
 				E251D1451C0213C000631FC8 /* Info.plist */,
@@ -157,6 +160,7 @@
 				E251D1371C0213C000631FC8 /* AppDelegate.swift in Sources */,
 				E251D14E1C02699300631FC8 /* UserSettings.swift in Sources */,
 				E251D14C1C02678400631FC8 /* SettingsViewController.swift in Sources */,
+				E2385C581C07ED3E00E18E5B /* CleanDates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +308,7 @@
 				E251D14A1C0213C000631FC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
