@@ -27,6 +27,9 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated);
         
+        //set background color
+        self.view.backgroundColor = UIColor(red:0.19, green:0.19, blue:0.19, alpha:1.0);
+        
         //create UI Labels
         createUI();
         
@@ -121,7 +124,7 @@ class SettingsViewController: UIViewController {
         let label = UILabel();
         label.frame = CGRectMake(50,startingHeight,100,21);
         label.textColor = UIColor.whiteColor();
-        label.backgroundColor = UIColor.blackColor();
+        label.backgroundColor = UIColor(red:0.19, green:0.19, blue:0.19, alpha:1.0);
         label.text = labelTitle;
         label.font = UIFont.boldSystemFontOfSize(16.0);
         
@@ -137,7 +140,7 @@ class SettingsViewController: UIViewController {
         let button = IdentifiedButton(frame: CGRectMake(175, startingHeight, 125, 30));
         button.buttonIdentifier = key;
         button.addTarget(self, action: "timeSet:", forControlEvents: UIControlEvents.TouchUpInside);
-        button.backgroundColor = UIColor.blackColor();
+        button.backgroundColor = UIColor(red:0.19, green:0.19, blue:0.19, alpha:1.0);
         button.layer.cornerRadius = 5;
         button.layer.borderWidth=1;
         

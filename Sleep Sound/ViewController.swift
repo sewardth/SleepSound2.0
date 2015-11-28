@@ -35,6 +35,8 @@ class ViewController: UIViewController {
         //update user settings
         settings = userSettings();
         
+        //set background color
+        self.view.backgroundColor = UIColor(red:0.19, green:0.19, blue:0.19, alpha:1.0);
         
         //add time function here
         let timeSetting = determineRunToTime();
@@ -69,9 +71,6 @@ class ViewController: UIViewController {
         //get saved date and convert to CleanDate with current date
         let savedDate = getSavedUserTime(weekday);
         let updatedSaveDate = updateSavedDate(savedDate!, currentDateComp: cleanNowComponents);
-        
-        print("Saved Time : " + String(updatedSaveDate));
-        print("Current Time : " + String(today));
         
         //if saved date time is less than now, return that setting.  Otherwise, return the next setting.  
         if updatedSaveDate.timeIntervalSince1970 > today.timeIntervalSince1970 {
