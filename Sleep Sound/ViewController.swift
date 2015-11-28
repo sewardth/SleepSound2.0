@@ -40,22 +40,22 @@ class ViewController: UIViewController {
         let timeSetting = determineRunToTime();
         
         //set time label with set time
-        timeLabel.text = timeSetting.formattedStringTime;
+        timeLabel.text = timeSetting.0.formattedStringTime;
         
         //create day label
-        let dayLabelValue = settings.storageKeys[timeSetting.getDateComponents().weekday];
+        let dayLabelValue = settings.storageKeys[timeSetting.1];
         
         //strip numbers from day
         let index = dayLabelValue!.startIndex.advancedBy(2);
         let daylabelTitle = dayLabelValue!.substringFromIndex(index);
         
         //set day label text
-        dayLabel.text = daylabelTitle;
+        dayLabel.text = daylabelTitle + " (" + timeSetting.2 + ")";
         
         
     }
     
-    func determineRunToTime()->CleanDate!{
+    func determineRunToTime()->(CleanDate!, Int, String){
         //decides which time the user would like the sound to play to
         let today = NSDate();
         
@@ -70,11 +70,20 @@ class ViewController: UIViewController {
         let savedDate = getSavedUserTime(weekday);
         let updatedSaveDate = updateSavedDate(savedDate!, currentDateComp: cleanNowComponents);
         
+        print("Saved Time : " + String(updatedSaveDate));
+        print("Current Time : " + String(today));
+        
         //if saved date time is less than now, return that setting.  Otherwise, return the next setting.  
         if updatedSaveDate.timeIntervalSince1970 > today.timeIntervalSince1970 {
-            return CleanDate(normalDate: updatedSaveDate);
+            return (CleanDate(normalDate: updatedSaveDate), weekday, "today");
         } else{
-            return CleanDate(normalDate: getSavedUserTime(weekday + 1));
+            //checks if end of week.  If so, set weekday to 1.
+            if weekday == 7{
+                return (CleanDate(normalDate: getSavedUserTime(1)), 1, "tomorrow");
+            }else{
+                return (CleanDate(normalDate: getSavedUserTime(weekday + 1)), weekday + 1 , "tomorrow");
+            }
+            
         }
     }
     

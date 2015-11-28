@@ -52,7 +52,7 @@ struct userSettings{
         defaults.setValue(value, forKey: key)
         defaults.synchronize();
         
-        print("Stored " + key + " : Value: " + String(value));
+        //print("Stored " + key + " : Value: " + String(value));
         
     }
 }
