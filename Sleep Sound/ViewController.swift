@@ -29,7 +29,11 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     //create audio player variable
     var audioPlayer : AVAudioPlayer!
     
+    //create global playUntilTime variable
     var playUntilTime: NSDate!
+    
+    //set gloabl calendar variable
+    let userCalendar = NSCalendar.currentCalendar();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,11 +126,25 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         if updatedSaveDate.timeIntervalSince1970 > today.timeIntervalSince1970 {
             return (CleanDate(normalDate: updatedSaveDate), weekday, "today");
         } else{
+            
+            //get date for tomorrow
+            let tomorrow = userCalendar.dateByAddingUnit([.Day], value: 1, toDate: today, options: []);
+            
+            //convert to clean date object
+            let cleanTomorrow = CleanDate(normalDate: tomorrow!);
+            
+            //get tomorrow's components
+            let cleanTomorrowComponents = cleanTomorrow.getDateComponents();
+            
             //checks if end of week.  If so, set weekday to 1.
             if weekday == 7{
-                return (CleanDate(normalDate: getSavedUserTime(1)), 1, "tomorrow");
+                //get updated tomorrow date
+                let updatedDate = updateSavedDate(getSavedUserTime(1), currentDateComp: cleanTomorrowComponents);
+                return (CleanDate(normalDate: updatedDate), 1, "tomorrow");
             }else{
-                return (CleanDate(normalDate: getSavedUserTime(weekday + 1)), weekday + 1 , "tomorrow");
+                //get tomorrow date
+                let updatedDate = updateSavedDate(getSavedUserTime(weekday + 1), currentDateComp: cleanTomorrowComponents);
+                return (CleanDate(normalDate: updatedDate), weekday + 1 , "tomorrow");
             }
             
         }
@@ -134,6 +152,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
             return(CleanDate(normalDate: NSDate()), 0 ,"");
         }
     }
+
+    
     
     func getSavedUserTime(weekday: Int)->NSDate!{
         //receives a weekday integer and queries the saved user setting
@@ -195,6 +215,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         
         //set audioPlayer loops
         audioPlayer.numberOfLoops = Int(loopCount);
+        
+        print(timeInSeconds);
         
     }
     
