@@ -41,18 +41,25 @@ class ViewController: UIViewController {
         //add time function here
         let timeSetting = determineRunToTime();
         
-        //set time label with set time
-        timeLabel.text = timeSetting.0.formattedStringTime;
-        
-        //create day label
-        let dayLabelValue = settings.storageKeys[timeSetting.1];
-        
-        //strip numbers from day
-        let index = dayLabelValue!.startIndex.advancedBy(2);
-        let daylabelTitle = dayLabelValue!.substringFromIndex(index);
-        
-        //set day label text
-        dayLabel.text = daylabelTitle + " (" + timeSetting.2 + ")";
+        //check if user has saved time, else set the timer to notification message
+        if timeSetting.1 != 0{
+            //set time label with set time
+            timeLabel.text = timeSetting.0.formattedStringTime;
+            
+            //create day label
+            let dayLabelValue = settings.storageKeys[timeSetting.1];
+            
+            //strip numbers from day
+            let index = dayLabelValue!.startIndex.advancedBy(2);
+            let daylabelTitle = dayLabelValue!.substringFromIndex(index);
+            
+            //set day label text
+            dayLabel.text = daylabelTitle + " (" + timeSetting.2 + ")";
+            dayLabel.hidden = false;
+        }else{
+            dayLabel.hidden = true;
+            timeLabel.text = "Not Set";
+        }
         
         
     }
@@ -70,7 +77,8 @@ class ViewController: UIViewController {
         
         //get saved date and convert to CleanDate with current date
         let savedDate = getSavedUserTime(weekday);
-        let updatedSaveDate = updateSavedDate(savedDate!, currentDateComp: cleanNowComponents);
+        if savedDate != nil{
+        let updatedSaveDate = updateSavedDate(savedDate, currentDateComp: cleanNowComponents);
         
         //if saved date time is less than now, return that setting.  Otherwise, return the next setting.  
         if updatedSaveDate.timeIntervalSince1970 > today.timeIntervalSince1970 {
@@ -84,6 +92,9 @@ class ViewController: UIViewController {
             }
             
         }
+        }else{
+            return(CleanDate(normalDate: NSDate()), 0 ,"");
+        }
     }
     
     func getSavedUserTime(weekday: Int)->NSDate!{
@@ -91,10 +102,10 @@ class ViewController: UIViewController {
         let lookupKey = settings.storageKeys[weekday];
         let savedDate = settings.savedTimes[lookupKey!];
         
-        return savedDate;
+        return savedDate!;
     }
     
-    func updateSavedDate(savedDateComp: NSDate!, currentDateComp: NSDateComponents!)->NSDate!{
+    func updateSavedDate(savedDateComp: NSDate, currentDateComp: NSDateComponents!)->NSDate{
         //updates saved date with current date parts.  Time remains unchanged
         
         //get saved date as a clean date
