@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController, AVAudioPlayerDelegate {
     
     //create button outlets
     @IBOutlet weak var startButton: UIButton!
@@ -24,10 +26,42 @@ class ViewController: UIViewController {
     //check for saved user settings
     var settings = userSettings();
     
+    //create audio player variable
+    var audioPlayer : AVAudioPlayer!
+    
+    var playUntilTime: NSDate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //use this to set AVAudio player
         
+        //create AVAudio instance
+        let dispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        dispatch_async(dispatchQueue, {
+            
+            if let data = NSData(contentsOfFile: self.audioFilePath())
+            {
+                do{
+                    let session = AVAudioSession.sharedInstance()
+                    
+                    try session.setCategory(AVAudioSessionCategoryPlayback)
+                    try session.setActive(true)
+                    
+                    self.audioPlayer = try AVAudioPlayer(data: data)
+                    self.audioPlayer.delegate = self
+                    self.audioPlayer.prepareToPlay()
+                }
+                catch{
+                    print("\(error)")
+                }
+            }
+        });
+        
+    }
+    
+    func audioFilePath() -> String{
+        //function to retrieve file path
+        let filePath = NSBundle.mainBundle().pathForResource("brown_noise_short", ofType: "m4a")!
+        return filePath
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -56,6 +90,10 @@ class ViewController: UIViewController {
             //set day label text
             dayLabel.text = daylabelTitle + " (" + timeSetting.2 + ")";
             dayLabel.hidden = false;
+            
+            //set global var playUntilTime
+            playUntilTime = timeSetting.0.date;
+            
         }else{
             dayLabel.hidden = true;
             timeLabel.text = "Not Set";
@@ -133,6 +171,40 @@ class ViewController: UIViewController {
     @IBAction func startSound(sender: UIButton) {
         //hide start button and display stop
         buttonSwap();
+        
+        //set audioPlayer properties for proper playtime
+        determinePlayDuration();
+        
+        //start sound
+        audioPlayer.play();
+        
+        
+    }
+    
+    func determinePlayDuration(){
+        //determines difference in dates and sets audioPlayer loops to that amount.
+        
+        //get the file duration
+        let duration = audioPlayer.duration;
+        
+        //get difference between now and playUntilTime
+        let timeInSeconds = playUntilTime.timeIntervalSinceNow;
+        
+        //calculate the loops
+        let loopCount = timeInSeconds / duration;
+        
+        //set audioPlayer loops
+        audioPlayer.numberOfLoops = Int(loopCount);
+        
+    }
+    
+    func audioPlayerDidFinishPlaying(audioPlayer: AVAudioPlayer, successfully flag: Bool)
+    {
+        //receives callback when audio stops and resets button.
+        buttonSwap();
+        
+        //resets current view
+        self.viewWillAppear(false);
     }
     
     
@@ -140,6 +212,9 @@ class ViewController: UIViewController {
     @IBAction func stopSound(sender: UIButton) {
         //hide stop button and display start
         buttonSwap();
+        
+        //stop sound
+        audioPlayer.stop();
     }
     
     
