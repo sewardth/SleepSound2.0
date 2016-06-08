@@ -32,6 +32,9 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     //create global playUntilTime variable
     var playUntilTime: NSDate!
     
+    //create timer object to end playback
+    var timer = NSTimer();
+    
     //set gloabl calendar variable
     let userCalendar = NSCalendar.currentCalendar();
     
@@ -64,7 +67,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     
     func audioFilePath() -> String{
         //function to retrieve file path
-        let filePath = NSBundle.mainBundle().pathForResource("brown_noise_short", ofType: "m4a")!
+        let filePath = NSBundle.mainBundle().pathForResource("brown_noise", ofType: "mp3")!
         return filePath
     }
     
@@ -98,9 +101,15 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
             //set global var playUntilTime
             playUntilTime = timeSetting.0.date;
             
+            //enable the start button
+            startButton.enabled = true;
+            
         }else{
             dayLabel.hidden = true;
             timeLabel.text = "Not Set";
+            
+            //disable start button
+            startButton.enabled = false;
         }
         
         
@@ -193,7 +202,10 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         buttonSwap();
         
         //set audioPlayer properties for proper playtime
-        determinePlayDuration();
+        let time = determinePlayDuration();
+        
+        //set the time delegate to end playback
+        timer = NSTimer.scheduledTimerWithTimeInterval(time, target:self, selector: #selector(ViewController.stopSound), userInfo: nil, repeats: false)
         
         //start sound
         audioPlayer.play();
@@ -201,7 +213,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         
     }
     
-    func determinePlayDuration(){
+    func determinePlayDuration() -> NSTimeInterval!{
         //determines difference in dates and sets audioPlayer loops to that amount.
         
         //get the file duration
@@ -218,6 +230,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         
         print(timeInSeconds);
         
+        return timeInSeconds;
     }
     
     func audioPlayerDidFinishPlaying(audioPlayer: AVAudioPlayer, successfully flag: Bool)
@@ -237,6 +250,9 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         
         //stop sound
         audioPlayer.stop();
+        
+        //stop the timer
+        timer.invalidate();
     }
     
     

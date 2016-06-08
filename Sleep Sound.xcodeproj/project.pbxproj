@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E20121581C0A985900FE867E /* brown_noise_short.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E20121571C0A985900FE867E /* brown_noise_short.m4a */; };
 		E2385C581C07ED3E00E18E5B /* CleanDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2385C571C07ED3E00E18E5B /* CleanDates.swift */; };
+		E246E3E61C0B714E00C6A570 /* brown_noise_short.wav in Resources */ = {isa = PBXBuildFile; fileRef = E246E3E51C0B714E00C6A570 /* brown_noise_short.wav */; };
 		E251D1371C0213C000631FC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251D1361C0213C000631FC8 /* AppDelegate.swift */; };
 		E251D1391C0213C000631FC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251D1381C0213C000631FC8 /* ViewController.swift */; };
 		E251D13C1C0213C000631FC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E251D13A1C0213C000631FC8 /* Main.storyboard */; };
@@ -19,11 +20,13 @@
 		E251D14E1C02699300631FC8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251D14D1C02699300631FC8 /* UserSettings.swift */; };
 		E251D1501C07337C00631FC8 /* IdentifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251D14F1C07337C00631FC8 /* IdentifiedButton.swift */; };
 		E251D1521C0766D500631FC8 /* IdentifiedUIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251D1511C0766D500631FC8 /* IdentifiedUIDatePicker.swift */; };
+		E2C21AB81D07AC7600270A89 /* brown_noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E2C21AB71D07AC7600270A89 /* brown_noise.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E20121571C0A985900FE867E /* brown_noise_short.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = brown_noise_short.m4a; sourceTree = "<group>"; };
 		E2385C571C07ED3E00E18E5B /* CleanDates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanDates.swift; sourceTree = "<group>"; };
+		E246E3E51C0B714E00C6A570 /* brown_noise_short.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = brown_noise_short.wav; path = ../brown_noise_short.wav; sourceTree = "<group>"; };
 		E251D1331C0213C000631FC8 /* Sleep Sound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sleep Sound.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E251D1361C0213C000631FC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E251D1381C0213C000631FC8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		E251D14D1C02699300631FC8 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		E251D14F1C07337C00631FC8 /* IdentifiedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiedButton.swift; sourceTree = "<group>"; };
 		E251D1511C0766D500631FC8 /* IdentifiedUIDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiedUIDatePicker.swift; sourceTree = "<group>"; };
+		E2C21AB71D07AC7600270A89 /* brown_noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = brown_noise.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 		E251D1351C0213C000631FC8 /* Sleep Sound */ = {
 			isa = PBXGroup;
 			children = (
+				E2C21AB71D07AC7600270A89 /* brown_noise.mp3 */,
+				E246E3E51C0B714E00C6A570 /* brown_noise_short.wav */,
 				E20121571C0A985900FE867E /* brown_noise_short.m4a */,
 				E251D14B1C02678400631FC8 /* SettingsViewController.swift */,
 				E251D14D1C02699300631FC8 /* UserSettings.swift */,
@@ -152,6 +158,8 @@
 				E20121581C0A985900FE867E /* brown_noise_short.m4a in Resources */,
 				E251D1411C0213C000631FC8 /* Assets.xcassets in Resources */,
 				E251D13C1C0213C000631FC8 /* Main.storyboard in Resources */,
+				E2C21AB81D07AC7600270A89 /* brown_noise.mp3 in Resources */,
+				E246E3E61C0B714E00C6A570 /* brown_noise_short.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
